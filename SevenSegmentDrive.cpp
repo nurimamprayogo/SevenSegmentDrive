@@ -51,7 +51,7 @@ void SevenSegmentDrive::displayNeo(uint16_t digit, uint8_t position) {
   pixels->setPixelColor((position * 3)+ 1, pixels->Color(((digit>>2)&1)*neoBright, ((digit>>3)&1)*neoBright, ((digit>>4)&1)*neoBright)); 
   pixels->setPixelColor((position * 3)+ 2, pixels->Color(((digit>>5)&1)*neoBright, ((digit>>6)&1)*neoBright, ((digit>>7)&1)*neoBright)); 
   
-  // Mengatur segmen c,b,a pada WS2811(3)
+  // 
   /*
   for (int i = 0; i < 3; i++) {
     if (segments & (1 << (i + 4))) {

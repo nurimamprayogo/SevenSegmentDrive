@@ -82,13 +82,13 @@ void SevenSegmentDrive::displayNeo(uint16_t digit, uint8_t position) {
 }
 
 void SevenSegmentDrive::displayNumber(float num,unsigned char decimal) {
-  char buffer[128];
+  char buffer[10];
   dtostrf(num, 1, decimal, buffer); 
   displayString(buffer);
 }
 
 void SevenSegmentDrive::displayNumber(int num){
-  char buffer[128];
+  char buffer[10];
   itoa(num, buffer, 10); 
   displayString(buffer);
 }
