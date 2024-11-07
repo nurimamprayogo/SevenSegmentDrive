@@ -10,9 +10,9 @@
 class SevenSegmentDrive {
   public:
     // Constructor untuk WS2811
-    SevenSegmentDrive(int dinPin, int enPin, int setPin, int clkPin);
+    SevenSegmentDrive(int dinPin, int enPin, int setPin, int clkPin, int numSegment);
 	
-	SevenSegmentDrive(int ledPin, int numSegment);
+	SevenSegmentDrive(int dinPin, int enPin, int numSegment);
 
     // Fungsi untuk mengatur mode (SRC atau MPWM)
     void begin();
@@ -25,19 +25,18 @@ class SevenSegmentDrive {
     void displayString(const char* str);
 
     // Fungsi untuk mengatur brightness
-    void segBright(unsigned char brightness);
+    void setBright(unsigned char brightness);
 
-	void setOut();
+	void show();
 void sendByte(unsigned char _data);
 
   private:
     // Pin
-    int dinPin, enPin, setPin, clkPin;
+    int dinPin, enPin, setPin, clkPin, numSegment;
 	bool mode;
 	unsigned char neoBright=128;
 	
     // Fungsi untuk mengirim byte menggunakan shiftOut (untuk mode SRC)
-    
     // Fungsi untuk mengatur output (untuk mode SRC)
     
 
@@ -45,7 +44,7 @@ void sendByte(unsigned char _data);
     void displayNeo(uint16_t digit, uint8_t position);
 
     // WS2811 (NeoPixel) related
-    Adafruit_NeoPixel* pixels;
+    Adafruit_NeoPixel pixels;
 
     // Tabel heksadesimal untuk setiap digit (0-9)
     const uint8_t sevenSegmentDigits[10] = {
@@ -70,26 +69,26 @@ void sendByte(unsigned char _data);
 	  0b01111010, // D
 	  0b10011110, // E
 	  0b10001110, // F
-	  0b10111100, // G
-	  0b11101100, // H
+	  0b10111110, // G
+	  0b01101110, // H
 	  0b01100000, // I
 	  0b01110000, // J
 	  0b10101110, // K (Note: limited by 7-segment)
 	  0b00011100, // L
 	  0b10101000, // M (limited by 7-segment)
-	  0b01010100, // N (limited by 7-segment)
+	  0b11101100, // N (limited by 7-segment)
 	  0b11111100, // O
 	  0b11001110, // P
 	  0b11100110, // Q
-	  0b00010110, // R
+	  0b00001010, // R
 	  0b10110110, // S
 	  0b00011110, // T
 	  0b01111100, // U
-	  0b01111100, // V (same as U due to 7-segment)
-	  0b10111100, // W (limited by 7-segment)
-	  0b11011010, // X
+	  0b00111000, // V (same as U due to 7-segment)
+	  0b00000000, // W (limited by 7-segment)
+	  0b01101110, // X
 	  0b01110110, // Y
-	  0b11011000  // Z
+	  0b11011010  // Z
 	};
 
 };
